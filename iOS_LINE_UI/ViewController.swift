@@ -10,6 +10,8 @@ import UIKit
 
 final class ViewController: UIViewController {
 
+    // MARK: - UI
+    
     fileprivate lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -17,6 +19,8 @@ final class ViewController: UIViewController {
         button.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
         return button
     }()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +47,7 @@ extension ViewController {
     }
     
     @objc fileprivate func tapButton(_ sender: UIButton) {
-        print("hogehgoe")
+        let vc = ChatViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
