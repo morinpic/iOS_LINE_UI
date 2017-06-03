@@ -8,18 +8,41 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
+    fileprivate lazy var button: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("chat", for: .normal)
+        button.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        setupView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
+// MARK: - Private Functions
+extension ViewController {
+    
+    fileprivate func setupView() {
+        title = "Main"
+        
+        view.backgroundColor = .white
+
+        view.addSubview(button)
+        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    @objc fileprivate func tapButton(_ sender: UIButton) {
+        print("hogehgoe")
+    }
+}
